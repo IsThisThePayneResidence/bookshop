@@ -1,10 +1,12 @@
-package com.bookshop.springfx.gui;
+package com.bookshop.gui;
+
+import com.bookshop.controllers.ViewController;
 
 public abstract class Modal extends ViewController {
 
     protected ModalDialog dialog;
 
-    public Modal(ScreensConfig config) {
+    public Modal(ViewConfig config) {
         super(config);
     }
 

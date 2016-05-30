@@ -1,6 +1,10 @@
-# Bookshop Accounting #
+# Bookshop #
 
-An short project that exemplifies how you can integrate Spring with JavaFX.
+A simple application for basic bookshop accounting written in Java with Spring and JavaFX  
+
+Essentially, this is a small project that exemplifies how you can integrate Spring with JavaFX
+
+It's build on top of [this project](https://bitbucket.org/stancalau/springfx/branch/maven)
 
 ### Prerequisites ###
 

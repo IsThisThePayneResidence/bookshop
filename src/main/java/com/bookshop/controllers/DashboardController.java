@@ -1,6 +1,6 @@
-package com.bookshop.springfx.gui;
+package com.bookshop.controllers;
 
-import com.bookshop.springfx.control.LanguageController;
+import com.bookshop.gui.ViewConfig;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -11,15 +11,14 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.bookshop.springfx.domain.LanguageModel.Language;
+import com.bookshop.domain.LanguageModel.Language;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 public class DashboardController extends ViewController {
 
-    public DashboardController(ScreensConfig config) {
+    public DashboardController(ViewConfig config) {
         super(config);
     }
 

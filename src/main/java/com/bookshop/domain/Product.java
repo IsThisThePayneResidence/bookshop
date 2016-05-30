@@ -1,4 +1,4 @@
-package com.bookshop.springfx.domain;
+package com.bookshop.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;

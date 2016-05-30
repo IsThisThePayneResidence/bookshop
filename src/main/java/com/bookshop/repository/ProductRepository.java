@@ -1,6 +1,6 @@
-package com.bookshop.springfx.repository;
+package com.bookshop.repository;
 
-import com.bookshop.springfx.domain.Product;
+import com.bookshop.domain.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-//import org.springframework.data.repository.CrudRepository;
 
 /**
  * Created by

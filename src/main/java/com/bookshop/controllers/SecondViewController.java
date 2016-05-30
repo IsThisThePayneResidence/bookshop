@@ -1,19 +1,19 @@
-package com.bookshop.springfx.gui;
+package com.bookshop.controllers;
 
 import java.util.Observable;
 import java.util.Observer;
 
+import com.bookshop.domain.MessageModel;
+import com.bookshop.gui.ViewConfig;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.bookshop.springfx.domain.MessageModel;
-
 public class SecondViewController extends ViewController {
 
-	public SecondViewController(ScreensConfig config) {
+	public SecondViewController(ViewConfig config) {
 		super(config);
 	}
 	

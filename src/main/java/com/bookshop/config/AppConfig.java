@@ -1,19 +1,18 @@
-package com.bookshop.springfx.config;
+package com.bookshop.config;
 
-import com.bookshop.springfx.gui.ScreensConfig;
+import com.bookshop.controllers.LanguageController;
+import com.bookshop.gui.ViewConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import com.bookshop.springfx.control.LanguageController;
-import com.bookshop.springfx.domain.LanguageModel;
-import com.bookshop.springfx.domain.MessageModel;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import com.bookshop.domain.LanguageModel;
+import com.bookshop.domain.MessageModel;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.support.DefaultConversionService;
 
 
 @Configuration
-@Import(ScreensConfig.class)
+@Import(ViewConfig.class)
 public class AppConfig {
 
     @Bean

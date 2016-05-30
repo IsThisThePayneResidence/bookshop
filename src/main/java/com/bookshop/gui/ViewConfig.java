@@ -1,5 +1,9 @@
-package com.bookshop.springfx.gui;
+package com.bookshop.gui;
 
+import com.bookshop.controllers.DashboardController;
+import com.bookshop.controllers.PopupController;
+import com.bookshop.controllers.SecondViewController;
+import com.bookshop.controllers.ViewController;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,7 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
-import com.bookshop.springfx.domain.LanguageModel;
+import com.bookshop.domain.LanguageModel;
 
 import java.net.URL;
 import java.util.List;
@@ -24,15 +28,15 @@ import java.util.ResourceBundle;
 @Configuration
 @ComponentScan(basePackages = { "com.bookshop.*" })
 @PropertySource("classpath:application.properties")
-public class ScreensConfig implements Observer {
+public class ViewConfig implements Observer {
 
-    private static final Logger logger = LogManager.getLogger(ScreensConfig.class);
+    private static final Logger logger = LogManager.getLogger(ViewConfig.class);
 
     @Value("${ui.window.title}")
     private String windowTitle;
 
-    @Value("${ui.window.css.path}")
-    private String styleFile;
+    @Value("#{'${ui.window.css.path}'.split(',')}")
+    private List<String> styleFiles;
 
     @Value("${ui.window.width}")
     private Integer width;
@@ -63,7 +67,9 @@ public class ScreensConfig implements Observer {
 
     public void showMainScreen() {
         root = new StackPane();
-        root.getStylesheets().add(styleFile);
+        for (String styleFile : styleFiles) {
+            root.getStylesheets().add(styleFile);
+        }
         root.getStyleClass().add("main-window");
 //        stage.setTitle("SpringFX");
         scene = new Scene(root, width, height);
@@ -98,24 +104,28 @@ public class ScreensConfig implements Observer {
         root.getChildren().remove(node);
     }
 
-    void loadDashboard() {
-        setNode(getNode(firstPresentation(), getClass().getResource("dashboard.fxml")));
+    public void loadDashboard() {
+        setNode(getNode(dashboardController(), getClass().getResource("dashboard.fxml")));
     }
 
-    void loadSecond() {
+    public void loadSecond() {
         setNode(getNode(secondPresentation(), getClass().getResource("Second.fxml")));
     }
 
-    void loadPopup() {
+    public void loadPopup() {
         ModalDialog modal = new ModalDialog(popupPresentation(), getClass().getResource("Popup.fxml"), stage.getOwner(), lang.getBundle());
         modal.setTitle(lang.getBundle().getString("popup.title"));
-        modal.getStyleSheets().add(styleFile);
+
+        for (String styleFile : styleFiles) {
+            modal.getStyleSheets().add(styleFile);
+        }
+
         modal.show();
     }
 
     @Bean
     @Scope("prototype")
-    DashboardController firstPresentation() {
+    DashboardController dashboardController() {
         return new DashboardController(this);
     }
 

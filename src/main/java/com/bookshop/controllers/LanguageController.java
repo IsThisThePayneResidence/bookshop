@@ -1,8 +1,8 @@
-package com.bookshop.springfx.control;
+package com.bookshop.controllers;
 
 
-import com.bookshop.springfx.domain.LanguageModel;
-import com.bookshop.springfx.domain.LanguageModel.Language;
+import com.bookshop.domain.LanguageModel;
+import com.bookshop.domain.LanguageModel.Language;
 
 public class LanguageController {
 

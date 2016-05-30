@@ -1,14 +1,16 @@
-package com.bookshop.springfx.gui;
+package com.bookshop.controllers;
 
+import com.bookshop.domain.MessageModel;
+import com.bookshop.gui.Modal;
+import com.bookshop.gui.ViewConfig;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.bookshop.springfx.domain.MessageModel;
 
 public class PopupController extends Modal {
 
-    public PopupController(ScreensConfig config) {
+    public PopupController(ViewConfig config) {
         super(config);
     }
 

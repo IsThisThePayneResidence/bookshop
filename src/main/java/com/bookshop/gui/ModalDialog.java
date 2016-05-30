@@ -1,4 +1,4 @@
-package com.bookshop.springfx.gui;
+package com.bookshop.gui;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
