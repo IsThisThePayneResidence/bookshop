@@ -52,7 +52,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>8.1.2</version>
                 <configuration>
-                    <mainClass>com.bookshop.application.Main</mainClass>
+                    <mainClass>com.bookshop.application.Application</mainClass>
                 </configuration>
             </plugin>
 

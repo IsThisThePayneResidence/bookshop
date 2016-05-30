@@ -33,10 +33,24 @@ public class Product implements Serializable {
     private Long number;
 
     @Column
-    private Float buyPrice;
+    private Double buyPrice;
 
     @Column
-    private Float sellPrice;
+    private Double sellPrice;
+
+    public Product() {
+
+    }
+
+    public Product(String type, String name, String brand, String author, long number, double buyPrice, double sellPrice) {
+        this.type = type;
+        this.name = name;
+        this.brand = brand;
+        this.author = author;
+        this.number = number;
+        this.buyPrice = buyPrice;
+        this.sellPrice = sellPrice;
+    }
 
     public Long getId() {
         return id;
@@ -86,19 +100,20 @@ public class Product implements Serializable {
         this.number = number;
     }
 
-    public Float getBuyPrice() {
+    public Double getBuyPrice() {
         return buyPrice;
     }
 
-    public void setBuyPrice(Float buyPrice) {
+    public void setBuyPrice(Double buyPrice) {
         this.buyPrice = buyPrice;
     }
 
-    public Float getSellPrice() {
+    public Double getSellPrice() {
         return sellPrice;
     }
 
-    public void setSellPrice(Float sellPrice) {
+    public void setSellPrice(Double sellPrice) {
         this.sellPrice = sellPrice;
     }
+
 }

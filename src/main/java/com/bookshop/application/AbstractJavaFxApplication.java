@@ -14,30 +14,12 @@ public abstract class AbstractJavaFxApplication extends Application {
 
     private static String[] savedArgs;
 
-    private static final Logger logger = LogManager.getLogger(AbstractJavaFxApplication.class);
-
     protected ConfigurableApplicationContext context;
 
     @Override
     public void init() throws Exception {
         context = SpringApplication.run(getClass(), savedArgs);
         context.getAutowireCapableBeanFactory().autowireBean(this);
-
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        logger.info("Starting application");
-
-        Platform.setImplicitExit(true);
-
-        ViewConfig screens = context.getBean(ViewConfig.class);
-        LanguageModel lang = context.getBean(LanguageModel.class);
-
-        screens.setLangModel(lang);
-        screens.setPrimaryStage(stage);
-        screens.showMainScreen();
-        screens.loadDashboard();
     }
 
     @Override
