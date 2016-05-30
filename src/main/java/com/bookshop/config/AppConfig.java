@@ -2,6 +2,8 @@ package com.bookshop.config;
 
 import com.bookshop.controllers.LanguageController;
 import com.bookshop.repository.ProductRepository;
+import com.bookshop.services.accounting.api.AccountingService;
+import com.bookshop.services.accounting.impl.AccountingServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.bookshop.domain.LanguageModel;
@@ -12,6 +14,11 @@ import org.springframework.core.convert.support.DefaultConversionService;
 
 @Configuration
 public class AppConfig {
+
+    @Bean
+    public AccountingService accountingService() {
+        return new AccountingServiceImpl();
+    }
 
     @Bean
     public ConversionService conversionService() {

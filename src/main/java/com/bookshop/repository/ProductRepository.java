@@ -24,7 +24,7 @@ import java.util.List;
 
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
-public interface ProductRepository extends CrudRepository<Product, Long> {
+public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
 
     List<Product> findAll();
 //
@@ -53,7 +53,4 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 //    List<Product> findByAuthor(String author, Sort sort);
 //
 //    List<Product> findByNumber(Long number);
-//
-//    List<Product> findByPrice(Float price);
-
 }

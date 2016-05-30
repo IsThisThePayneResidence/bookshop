@@ -3,6 +3,7 @@ package com.bookshop.services.accounting.impl;
 import com.bookshop.domain.Product;
 import com.bookshop.repository.ProductRepository;
 import com.bookshop.services.accounting.api.AccountingService;
+import com.bookshop.services.products.api.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +11,12 @@ import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Service
+@Service(value = "accountingService")
 @Transactional
 public class AccountingServiceImpl implements AccountingService {
 
     @Autowired
-    private ProductRepository repository;
+    private ProductRepository productRepository;
 
     @PostConstruct
     public void postConstruct() {
@@ -25,11 +26,11 @@ public class AccountingServiceImpl implements AccountingService {
 
     @Override
     public Product addProduct(Product product) {
-        return repository.save(product);
+        return productRepository.save(product);
     }
 
     @Override
     public List<Product> getProducts() {
-        return repository.findAll();
+        return productRepository.findAll();
     }
 }

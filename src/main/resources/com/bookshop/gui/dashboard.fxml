@@ -21,17 +21,14 @@
 
             <VBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="10.0" StackPane.alignment="CENTER">
                 <children>
-                    <Label text="%first.label.greeting" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS"/>
-                    <HBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="10.0" VBox.vgrow="ALWAYS">
-                        <children>
-                            <Button styleClass="btn-primary" mnemonicParsing="false" onAction="#nextView" prefHeight="50.0"
-                                    prefWidth="150.0" text="%first.button.nextview" HBox.hgrow="ALWAYS">
-                                <HBox.margin>
-                                    <Insets/>
-                                </HBox.margin>
-                            </Button>
-                        </children>
-                    </HBox>
+                    <TableView fx:id="table" editable="true" prefHeight="550.0" prefWidth="700.0"
+                               tableMenuButtonVisible="true" AnchorPane.bottomAnchor="50.0"
+                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                               AnchorPane.topAnchor="0.0">
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                    </TableView>
                     <HBox prefHeight="-1.0" prefWidth="-1.0" spacing="10.0" VBox.vgrow="NEVER">
                         <children>
                             <RadioButton fx:id="engRadio" mnemonicParsing="false" selected="true" styleClass="label"
