@@ -26,8 +26,6 @@ import java.util.ResourceBundle;
 
 
 @Configuration
-@ComponentScan(basePackages = { "com.bookshop.*" })
-@PropertySource("classpath:application.properties")
 public class ViewConfig implements Observer {
 
     private static final Logger logger = LogManager.getLogger(ViewConfig.class);
