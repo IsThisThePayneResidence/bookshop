@@ -3,16 +3,17 @@ package com.bookshop.services.accounting.impl;
 import com.bookshop.domain.Product;
 import com.bookshop.repository.ProductRepository;
 import com.bookshop.services.accounting.api.AccountingService;
-import com.bookshop.services.products.api.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+//@Transactional
 @Service(value = "accountingService")
-@Transactional
 public class AccountingServiceImpl implements AccountingService {
 
     @Autowired
@@ -31,6 +32,6 @@ public class AccountingServiceImpl implements AccountingService {
 
     @Override
     public List<Product> getProducts() {
-        return productRepository.findAll();
+        return (List<Product>) productRepository.findAll();
     }
 }

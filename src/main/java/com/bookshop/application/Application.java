@@ -19,10 +19,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableAutoConfiguration
 @Lazy
+@ComponentScan("com.bookshop")
 @PropertySource("classpath:application.properties")
 @Import({AppConfig.class, ViewConfig.class})
-@EntityScan(value = "com.bookshop.domain")
-@EnableJpaRepositories(value = "com.bookshop.repository")
+@EntityScan("com.bookshop.domain")
+@EnableJpaRepositories("com.bookshop.repository")
 public class Application extends AbstractJavaFxApplication {
 
     private static final Logger logger = LogManager.getLogger(AbstractJavaFxApplication.class);

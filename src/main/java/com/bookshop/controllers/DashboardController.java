@@ -1,5 +1,6 @@
 package com.bookshop.controllers;
 
+import com.bookshop.application.AbstractJavaFxApplication;
 import com.bookshop.domain.Product;
 import com.bookshop.gui.ViewConfig;
 import com.bookshop.services.accounting.api.AccountingService;
@@ -11,6 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.bookshop.domain.LanguageModel.Language;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +23,8 @@ import java.util.List;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 public class DashboardController extends ViewController {
+
+    private static final Logger logger = LogManager.getLogger(DashboardController.class);
 
     public DashboardController(ViewConfig config) {
         super(config);
@@ -46,30 +51,39 @@ public class DashboardController extends ViewController {
     @Autowired
     private AccountingService accountingService;
 
+    ObservableList<Product> data;
+
     @Value("#{'${menu.entries}'.split(',')}")
     private List<String> menuEntries;
 
+    //// TODO: 5/31/16 This is just for presentation - remove later
     @SuppressWarnings("unchecked")
-    @PostConstruct
-    public void init() {
-//        List<Product> products = accountingService.getProducts();
-//        ObservableList<Product> data = FXCollections.observableArrayList(products);
+    @FXML
+    public void loadProductsData() {
+        List<Product> products = accountingService.getProducts();
+        data = FXCollections.observableArrayList(products);
 
-//        TableColumn<Product, String> idColumn = new TableColumn<>("ID");
-//        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-//
-//        TableColumn<Product, String> nameColumn = new TableColumn<>("Имя");
-//        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-//
-//        TableColumn<Product, String> phoneColumn = new TableColumn<>("Телефон");
-//        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
-//
-//        TableColumn<Product, String> emailColumn = new TableColumn<>("E-mail");
-//        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-//
-//        table.getColumns().setAll(idColumn, nameColumn, phoneColumn, emailColumn);
+        TableColumn<Product, String> typeColumn = new TableColumn<>("Type");
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
 
-//        table.setItems(data);
+        TableColumn<Product, String> nameColumn = new TableColumn<>("Name");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        TableColumn<Product, String> authorColumn = new TableColumn<>("Author");
+        authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
+
+        TableColumn<Product, String> numberColumn = new TableColumn<>("Number");
+        numberColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
+
+        TableColumn<Product, String> buyPriceColumn = new TableColumn<>("Number");
+        buyPriceColumn.setCellValueFactory(new PropertyValueFactory<>("buyPrice"));
+
+        TableColumn<Product, String> sellPriceColumn = new TableColumn<>("Price");
+        sellPriceColumn.setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
+
+        table.getColumns().setAll(typeColumn, nameColumn, authorColumn, numberColumn, sellPriceColumn);
+
+        table.setItems(data);
     }
 
 
@@ -85,9 +99,14 @@ public class DashboardController extends ViewController {
             engRadio.setSelected(false);
             ruRadio.setSelected(true);
         }
-        langGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                changeLanguage();
+        langGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            changeLanguage();
+        });
+        leftMenu.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+
+            //// TODO: 5/31/16 This is just for presentation - remove later
+            if (newValue.equals("Products")) {
+                loadProductsData();
             }
         });
     }

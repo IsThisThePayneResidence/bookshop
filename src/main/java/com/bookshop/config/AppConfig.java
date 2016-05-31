@@ -15,10 +15,10 @@ import org.springframework.core.convert.support.DefaultConversionService;
 @Configuration
 public class AppConfig {
 
-    @Bean
-    public AccountingService accountingService() {
-        return new AccountingServiceImpl();
-    }
+//    @Bean
+//    public AccountingService accountingService() {
+//        return new AccountingServiceImpl();
+//    }
 
     @Bean
     public ConversionService conversionService() {

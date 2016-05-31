@@ -26,7 +26,7 @@ import java.util.List;
 @Transactional(propagation = Propagation.MANDATORY)
 public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
 
-    List<Product> findAll();
+//    List<Product> findAll();
 //
 //    List<Product> findByType(String type);
 //
