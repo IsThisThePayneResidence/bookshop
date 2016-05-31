@@ -32,11 +32,7 @@ public class ModalDialog extends Stage {
         FXMLLoader loader = new FXMLLoader(fxml);
         loader.setResources(bundle);
         try {
-            loader.setControllerFactory(new Callback<Class<?>, Object>() {
-                public Object call(Class<?> aClass) {
-                    return controller;
-                }
-            });
+            loader.setControllerFactory(aClass -> controller);
             controller.setDialog(this);
             scene = new Scene((Parent) loader.load());
             setScene(scene);

@@ -27,12 +27,7 @@ public class SecondViewController extends ViewController {
 	void initialize() {
 		messageTf.setText(model.getMessage());
 		
-		model.addObserver(new Observer() {
-			
-			public void update(Observable o, Object arg) {
-				messageTf.setText(model.getMessage());
-			}
-		});
+		model.addObserver((o, arg) -> messageTf.setText(model.getMessage()));
 	}
 	
 	@FXML 

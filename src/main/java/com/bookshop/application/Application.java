@@ -1,6 +1,7 @@
 package com.bookshop.application;
 
 import com.bookshop.config.AppConfig;
+import com.bookshop.config.JpaConfig;
 import com.bookshop.domain.LanguageModel;
 import com.bookshop.gui.ViewConfig;
 import javafx.application.Platform;
@@ -16,14 +17,10 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+@Lazy
 @SpringBootApplication
 @EnableAutoConfiguration
-@Lazy
-@ComponentScan("com.bookshop")
-@PropertySource("classpath:application.properties")
-@Import({AppConfig.class, ViewConfig.class})
-@EntityScan("com.bookshop.domain")
-@EnableJpaRepositories("com.bookshop.repository")
+@Import({AppConfig.class, ViewConfig.class, JpaConfig.class})
 public class Application extends AbstractJavaFxApplication {
 
     private static final Logger logger = LogManager.getLogger(AbstractJavaFxApplication.class);

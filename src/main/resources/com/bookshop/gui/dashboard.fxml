@@ -22,7 +22,7 @@
             <VBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="10.0" StackPane.alignment="CENTER">
                 <children>
                     <TableView fx:id="table" editable="true" prefHeight="550.0" prefWidth="700.0"
-                               tableMenuButtonVisible="true" AnchorPane.bottomAnchor="50.0"
+                               tableMenuButtonVisible="false" AnchorPane.bottomAnchor="50.0"
                                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                                AnchorPane.topAnchor="0.0">
                         <columnResizePolicy>

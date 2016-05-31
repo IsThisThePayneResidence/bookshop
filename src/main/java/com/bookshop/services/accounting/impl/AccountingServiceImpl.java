@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-//@Transactional
+@Transactional
 @Service(value = "accountingService")
 public class AccountingServiceImpl implements AccountingService {
 

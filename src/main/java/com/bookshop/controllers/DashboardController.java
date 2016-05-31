@@ -1,6 +1,7 @@
 package com.bookshop.controllers;
 
 import com.bookshop.application.AbstractJavaFxApplication;
+import com.bookshop.domain.LanguageModel;
 import com.bookshop.domain.Product;
 import com.bookshop.gui.ViewConfig;
 import com.bookshop.services.accounting.api.AccountingService;
@@ -17,6 +18,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.bookshop.domain.LanguageModel.Language;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -94,7 +96,11 @@ public class DashboardController extends ViewController {
 
     @FXML
     void initialize() {
+
+        menuEntries.replaceAll(s -> langCtr.getString(s));
+
         leftMenu.setItems(FXCollections.observableArrayList(menuEntries));
+
         if (Language.RU.equals(langCtr.getLanguage())) {
             engRadio.setSelected(false);
             ruRadio.setSelected(true);
@@ -105,7 +111,7 @@ public class DashboardController extends ViewController {
         leftMenu.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 
             //// TODO: 5/31/16 This is just for presentation - remove later
-            if (newValue.equals("Products")) {
+            if (newValue.equals(langCtr.getString("menu.products"))) {
                 loadProductsData();
             }
         });

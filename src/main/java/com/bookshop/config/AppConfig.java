@@ -5,14 +5,18 @@ import com.bookshop.repository.ProductRepository;
 import com.bookshop.services.accounting.api.AccountingService;
 import com.bookshop.services.accounting.impl.AccountingServiceImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import com.bookshop.domain.LanguageModel;
 import com.bookshop.domain.MessageModel;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.support.DefaultConversionService;
 
 
 @Configuration
+@ComponentScan("com.bookshop")
+@PropertySource("classpath:application.properties")
 public class AppConfig {
 
 //    @Bean

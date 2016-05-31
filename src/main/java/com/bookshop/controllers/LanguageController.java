@@ -24,4 +24,8 @@ public class LanguageController {
     public Language getLanguage() {
         return model.getLanguage();
     }
+
+    public String getString(String key) {
+        return model.getBundle().getString(key);
+    }
 }
