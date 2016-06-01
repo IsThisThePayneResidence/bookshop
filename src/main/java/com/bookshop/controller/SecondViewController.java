@@ -1,7 +1,4 @@
-package com.bookshop.controllers;
-
-import java.util.Observable;
-import java.util.Observer;
+package com.bookshop.controller;
 
 import com.bookshop.domain.MessageModel;
 import com.bookshop.gui.ViewConfig;
@@ -37,7 +34,7 @@ public class SecondViewController extends ViewController {
 	
 	@FXML
 	void prevView(ActionEvent event){
-		config.loadDashboard();
+		config.loadMain();
 	}
 	
 	@FXML 

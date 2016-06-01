@@ -1,6 +1,6 @@
 package com.bookshop.gui;
 
-import com.bookshop.controllers.ViewController;
+import com.bookshop.controller.ViewController;
 
 public abstract class Modal extends ViewController {
 

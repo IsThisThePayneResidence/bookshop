@@ -1,12 +1,9 @@
-package com.bookshop.controllers;
+package com.bookshop.controller;
 
-import com.bookshop.application.AbstractJavaFxApplication;
-import com.bookshop.domain.LanguageModel;
+import com.bookshop.domain.LanguageModel.Language;
 import com.bookshop.domain.Product;
 import com.bookshop.gui.ViewConfig;
-import com.bookshop.services.accounting.api.AccountingService;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import com.bookshop.service.accounting.api.AccountingService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,36 +13,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.bookshop.domain.LanguageModel.Language;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 
+//@Component
 @SuppressWarnings("SpringJavaAutowiringInspection")
-public class DashboardController extends ViewController {
+public class ProductsController extends ViewController {
 
-    private static final Logger logger = LogManager.getLogger(DashboardController.class);
+    private static final Logger logger = LogManager.getLogger(ProductsController.class);
 
-    public DashboardController(ViewConfig config) {
+    public ProductsController(ViewConfig config) {
         super(config);
     }
 
     @FXML
-    RadioButton engRadio;
-
-    @FXML
-    RadioButton ruRadio;
-
-    @FXML
-    ToggleGroup langGroup;
-
-    @FXML
     TableView<Product> table;
-
-    @FXML
-    ListView<String> leftMenu;
 
     @Autowired
     private LanguageController langCtr;
@@ -53,13 +38,11 @@ public class DashboardController extends ViewController {
     @Autowired
     private AccountingService accountingService;
 
-    ObservableList<Product> data;
-
-    @Value("#{'${menu.entries}'.split(',')}")
-    private List<String> menuEntries;
+    private ObservableList<Product> data;
 
     //// TODO: 5/31/16 This is just for presentation - remove later
     @SuppressWarnings("unchecked")
+//    @PostConstruct
     @FXML
     public void loadProductsData() {
         List<Product> products = accountingService.getProducts();
@@ -83,6 +66,10 @@ public class DashboardController extends ViewController {
         TableColumn<Product, String> sellPriceColumn = new TableColumn<>("Price");
         sellPriceColumn.setCellValueFactory(new PropertyValueFactory<>("sellPrice"));
 
+        logger.debug("Table : " + (table == null ? "null" : table.toString()));
+        logger.info("Table : " + (table == null ? "null" : table.toString()));
+        logger.warn("Table : " + (table == null ? "null" : table.toString()));
+
         table.getColumns().setAll(typeColumn, nameColumn, authorColumn, numberColumn, sellPriceColumn);
 
         table.setItems(data);
@@ -96,31 +83,7 @@ public class DashboardController extends ViewController {
 
     @FXML
     void initialize() {
-
-        menuEntries.replaceAll(s -> langCtr.getString(s));
-
-        leftMenu.setItems(FXCollections.observableArrayList(menuEntries));
-
-        if (Language.RU.equals(langCtr.getLanguage())) {
-            engRadio.setSelected(false);
-            ruRadio.setSelected(true);
-        }
-        langGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            changeLanguage();
-        });
-        leftMenu.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-
-            //// TODO: 5/31/16 This is just for presentation - remove later
-            if (newValue.equals(langCtr.getString("menu.products"))) {
-                loadProductsData();
-            }
-        });
+        loadProductsData();
     }
 
-    private void changeLanguage() {
-        if (engRadio.isSelected())
-            langCtr.toEnglish();
-        else
-            langCtr.toRussian();
-    }
 }

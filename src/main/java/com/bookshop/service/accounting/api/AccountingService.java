@@ -1,4 +1,4 @@
-package com.bookshop.services.accounting.api;
+package com.bookshop.service.accounting.api;
 
 import com.bookshop.domain.Product;
 

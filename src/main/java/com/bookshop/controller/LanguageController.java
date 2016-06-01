@@ -1,4 +1,4 @@
-package com.bookshop.controllers;
+package com.bookshop.controller;
 
 
 import com.bookshop.domain.LanguageModel;

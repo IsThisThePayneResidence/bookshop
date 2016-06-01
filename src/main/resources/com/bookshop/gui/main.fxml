@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?scenebuilder-preview-i18n-resource ../../../../lang_en.properties?>
+
+<!--<?scenebuilder-stylesheet ../../../../main.css?>-->
+
+<?import javafx.scene.Node?>
+<StackPane fx:id="root" maxHeight="-1.0"
+           maxWidth="-1.0" prefHeight="500.0"
+           prefWidth="1000.0" xmlns="http://javafx.com/javafx/8"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bookshop.controller.MainController">
+    <children>
+        <HBox alignment="CENTER_LEFT">
+
+            <ListView prefWidth="150" styleClass="vertical-menu" fx:id="leftMenu"/>
+
+            <VBox alignment="CENTER" prefHeight="-1.0" prefWidth="-1.0" spacing="10.0" StackPane.alignment="CENTER">
+                <children>
+                    <Pane fx:id="content"/>
+                    <HBox prefHeight="-1.0" prefWidth="-1.0" spacing="10.0" VBox.vgrow="NEVER">
+                        <children>
+                            <RadioButton fx:id="engRadio" mnemonicParsing="false" selected="true" styleClass="label"
+                                         text="%first.radio.english" HBox.hgrow="ALWAYS">
+                                <toggleGroup>
+                                    <ToggleGroup fx:id="langGroup"/>
+                                </toggleGroup>
+                            </RadioButton>
+                            <RadioButton fx:id="ruRadio" mnemonicParsing="false" styleClass="label"
+                                         text="%first.radio.russian" toggleGroup="$langGroup" HBox.hgrow="ALWAYS"/>
+                        </children>
+                    </HBox>
+                </children>
+            </VBox>
+        </HBox>
+    </children>
+    <padding>
+        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
+    </padding>
+</StackPane>

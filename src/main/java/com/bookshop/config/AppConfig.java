@@ -1,9 +1,6 @@
 package com.bookshop.config;
 
-import com.bookshop.controllers.LanguageController;
-import com.bookshop.repository.ProductRepository;
-import com.bookshop.services.accounting.api.AccountingService;
-import com.bookshop.services.accounting.impl.AccountingServiceImpl;
+import com.bookshop.controller.LanguageController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

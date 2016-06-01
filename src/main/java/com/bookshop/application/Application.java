@@ -41,6 +41,6 @@ public class Application extends AbstractJavaFxApplication {
         screens.setLangModel(lang);
         screens.setPrimaryStage(stage);
         screens.showMainScreen();
-        screens.loadDashboard();
+        screens.loadMain();
     }
 }
