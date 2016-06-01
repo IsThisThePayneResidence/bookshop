@@ -33,9 +33,6 @@ public class ProductsController extends ViewController {
     TableView<Product> table;
 
     @Autowired
-    private LanguageController langCtr;
-
-    @Autowired
     private AccountingService accountingService;
 
     private ObservableList<Product> data;

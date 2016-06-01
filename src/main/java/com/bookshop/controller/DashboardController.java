@@ -27,9 +27,6 @@ public class DashboardController extends ViewController {
     }
 
     @Autowired
-    private LanguageController langCtr;
-
-    @Autowired
     private AccountingService accountingService;
 
     @FXML
